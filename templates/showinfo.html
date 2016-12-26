@@ -1,0 +1,15 @@
+
+<ul class="nav nav-pills">
+	<li ng-class="active">
+		<a ui-sref="main.shows">Back To TV Shows</a>
+	</li>
+</ul>
+
+<div class="row col-lg-12">
+	<a class="thumbnail" style="text-decoration: none" href="https://www.themoviedb.org/tv/{{show.id}}" target="_blank">
+		<img ng-src="http://image.tmdb.org/t/p/original{{show.backdrop_path}}" onerror="this.src='image.jpg'"/>
+		<h2 class="text-left">{{show.name}} ({{show.first_air_date | limitTo: 4}})</h2>
+		<h4 class="text-left">TV Show Overview:</h4>
+		<p style="text-align: justify">Overview: "{{show.overview}}"</p>
+	</a>
+</div>

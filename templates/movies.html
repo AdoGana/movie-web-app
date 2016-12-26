@@ -1,0 +1,26 @@
+<ul class="nav nav-pills">
+	<li ng-class="active">
+		<a ui-sref="main.movies">Movies</a>
+	</li>
+	<li ng-class="active">
+		<a ui-sref="main.shows">TV Shows</a>
+	</li>
+</ul>
+
+<div class="row col-lg-12" ng-controller="movieCtrl">
+	<div class="input-group">
+	    <span class="input-group-btn">
+			<button class="btn btn-default" type="button">Go!</button>
+		</span>
+		<input class="form-control" type="text" ng-model="searchString.title" ng-minlength="3" ng-change="change(searchString)" placeholder="Enter your search terms" />
+	</div>
+	
+	<div class="col-md-6" ui-sref-active="selected" ng-repeat="movie in movies | orderBy: '-vote_average' | filter:searchString | limitTo:10">
+		<a href="" ui-sref="main.movieDetail({id: movie.id})" class="thumbnail" style="font-family: Times New Roman, Georgia, Serif; text-decoration: none">
+			<img ng-src="http://image.tmdb.org/t/p/w500{{movie.backdrop_path}}" onerror="this.src='image.jpg'"/>
+			<h3 class="text-center" style="white-space: nowrap; overflow: hidden;"><b>{{movie.title}}</b> ({{movie.release_date | limitTo: 4}})</h3>
+			<h3 class="text-right">Average rate: <b>{{movie.vote_average}}</b></h3>
+		</a>
+	</div>
+</div>
+ 
